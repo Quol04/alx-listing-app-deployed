@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Image from 'next/image';
 
 import { PropertyProps } from '@/interfaces/index';
 
@@ -15,17 +16,19 @@ const Card: React.FC<PropertyProps> = ({
   // Ensure rating is within valid range
   const displayRating = Math.max(0, Math.min(5, rating || 0));
   
+  const [imgSrc, setImgSrc] = useState(image || '/assets/hero_image.png');
+
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 max-w-sm mx-auto">
       <div className="relative">
-        <img
-          src={image || '/assets/hero_image.png'}
+        <Image
+          src={imgSrc}
           alt={name || 'Property image'}
+          width={768}
+          height={192}
           className="w-full h-48 object-cover"
-          onError={(e) => {
-            // If the provided image fails to load, fall back to a bundled asset at project root
-            (e.target as HTMLImageElement).src = '/file.svg';
-          }}
+          unoptimized
+          onError={() => setImgSrc('/file.svg')}
         />
         {discount && (
           <span className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-md text-sm font-semibold">
