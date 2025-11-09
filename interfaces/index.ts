@@ -32,3 +32,18 @@ export interface ButtonProps {
   action?: () => void
 }
 
+export interface BookingDetails {
+  propertyName: string;
+  startDate: string;
+  totalNights: number;
+  bookingFee: number;
+  price: number;
+}
+
+export interface Review {
+  avatar: string;
+  name: string;
+  rating: number;
+  comment: string;
+}
+

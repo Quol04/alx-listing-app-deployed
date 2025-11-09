@@ -1,4 +1,6 @@
-const ReviewSection: React.FC<{ reviews: any[] }> = ({ reviews }) => {
+import { Review } from "../../interfaces";
+
+const ReviewSection: React.FC<{ reviews: Review[] }> = ({ reviews }) => {
   return (
     <div className="mt-8">
       <h3 className="text-2xl font-semibold">Reviews</h3>
